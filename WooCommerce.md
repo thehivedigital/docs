@@ -1,4 +1,4 @@
-# Woocommerce
+# WooCommerce
 
 ##Remove WooCommerce SKUs Completely
 
