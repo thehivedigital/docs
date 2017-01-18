@@ -13,6 +13,10 @@ add_filter( 'wc_product_sku_enabled', '__return_false' );
 To disable SKUs completely on product pages, but leave them for use in the admin for administration purposes, use the following snippet.
 
 ```
-add_filter( 'wc_product_sku_enabled', '__return_false' );
-add_filter( 'wc_product_sku_enabled', '__return_false' );
+add_filter( 'wc_product_sku_enabled', function ( $enabled ) {
+    if ( ! is_admin() && is_product() ) {
+        return false;
+    }
+    return $enabled;
+});
 ```
