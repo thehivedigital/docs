@@ -33,8 +33,9 @@ add_filter( 'woocommerce_product_tabs', function($tabs){
 	return $tabs;
 }, 100 );
 ```
-##Remove one or more product category from WooCommerce shop page
+##Remove one or more product categories from WooCommerce shop page
 
+```
 function remove_cat_from_shop_loop($q) {
 
 	if (!$q->is_main_query()) {
@@ -58,3 +59,4 @@ function remove_cat_from_shop_loop($q) {
 }
 
 add_action('pre_get_posts', 'remove_cat_from_shop_loop');
+```
