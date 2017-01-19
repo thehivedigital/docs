@@ -33,7 +33,7 @@ add_filter( 'woocommerce_product_tabs', function($tabs){
 	return $tabs;
 }, 100 );
 ```
-##Hide Remove one or more product category from WooCommerce shop page
+##Remove one or more product category from WooCommerce shop page
 
 function remove_cat_from_shop_loop($q) {
 
