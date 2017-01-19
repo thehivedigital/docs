@@ -33,3 +33,28 @@ add_filter( 'woocommerce_product_tabs', function($tabs){
 	return $tabs;
 }, 100 );
 ```
+##Hide Remove one or more product category from WooCommerce shop page
+
+function remove_cat_from_shop_loop($q) {
+
+	if (!$q->is_main_query()) {
+		return;
+	}
+
+	if (!$q->is_post_type_archive()) {
+		return;
+	}
+
+	if (!is_admin() && is_shop()) {
+		$q->set('tax_query', [[
+			'taxonomy' => 'product_cat',
+			'field'    => 'slug',
+			'terms'    => ['cat-1', 'cat-2'], // Change it to the slug/s you want to hide
+			'operator' => 'NOT IN',
+		]]);
+	}
+
+	remove_action('pre_get_posts', 'remove_cat_from_shop_loop');
+}
+
+add_action('pre_get_posts', 'remove_cat_from_shop_loop');
