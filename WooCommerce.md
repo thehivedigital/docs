@@ -60,3 +60,20 @@ function remove_cat_from_shop_loop($q) {
 
 add_action('pre_get_posts', 'remove_cat_from_shop_loop');
 ```
+
+##Remove one or more category from the WooCommerce category widget
+
+### Category List
+```
+add_filter('woocommerce_product_categories_widget_args', function ($args) {
+	$args['exclude'] = [1,2,3];
+	return $args;
+});
+```
+### Category Dropdown
+```
+add_filter('wc_product_dropdown_categories_get_terms_args', function ($args) {
+	$args['exclude'] = [1,2,3];
+	return $args;
+});
+```
